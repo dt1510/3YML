@@ -1,6 +1,5 @@
 function [ predicted_binary_targets ] = predict_binary_targets( tree, testing_examples )
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
+% predicts target labels and outputs as a vector, given a decision tree and examples
 
     predicted_targets = zeros(size(testing_examples, 1), 1);
 

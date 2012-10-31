@@ -14,16 +14,7 @@ elseif sum(binary_targets)==length(binary_targets)
     
 elseif isempty(attributes)
     tree.class = majority_value(binary_targets);
-    p = 0;
-    n = 0;
-    for i = 1:length(binary_targets)
-        if binary_targets(i) == 0
-            n = n + 1;
-        else
-            p = p + 1;
-        end
-    end
-    tree.entropy = find_entropy(p, n);
+    tree.entropy = find_entropy_from_btargets(binary_targets);
     return
     
 else
@@ -52,20 +43,18 @@ else
         binary_targets1 = binary_targets1(1:num_rows1);
     end
     attributes(best_attribute) = [];
-    left_subtree = struct('op',{{}},'kids',{{}},'class',{{}});
-    right_subtree = struct('op',{{}},'kids',{{}},'class',{{}});
+    left_subtree = struct('op',{{}},'kids',{{}},'class',{{}},'entropy', {{}});
+    right_subtree = struct('op',{{}},'kids',{{}},'class',{{}}, 'entropy', {{}});
     if isempty(examples0)
         left_subtree.class =  majority_value(binary_targets);
-        left_subtree.op = {};
+        left_subtree.entropy = find_entropy_from_btargets(binary_targets);
     else
-       % attributes(best_attribute) = [];
         left_subtree = decision_tree_learning(examples0, attributes, binary_targets0);
     end 
     if isempty(examples1)
         right_subtree.class =  majority_value(binary_targets);
-        right_subtree.op = {};
+        right_subtree.entropy = find_entropy_from_btargets(binary_targets);
     else
-       % attributes(best_attribute) = [];
         right_subtree = decision_tree_learning(examples1, attributes, binary_targets1);
     end
     tree.kids = {left_subtree, right_subtree}; 

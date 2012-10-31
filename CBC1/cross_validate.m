@@ -1,9 +1,12 @@
 function [ info ] = cross_validate( examples, target_vector, fold_number )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+% does one fold given a fold number between 1 and 10
+%   trains 6 trees and tests predicted labels against actual labels
+%   outputs a struct which stores predictions vector, confusion matrix,
+%   error rate for the classifier, and precision rates, recall rates and
+%   F1_measures in row vectors for each class
 
     num_classes = 6;
-    info = struct('predictions',{{}},'confusion_matrix',{{}},'error_rate',{{}},'precision_rates',{{}},'recall_rates',{{}},'F1_measures',{{}});
+    info = struct('predictions',[],'confusion_matrix',[],'error_rate',[],'precision_rates',[],'recall_rates',[],'F1_measures',[]);
     info.precision_rates = zeros(1,num_classes);
     info.recall_rates = zeros(1,num_classes);
     info.F1_measures = zeros(1,num_classes);
