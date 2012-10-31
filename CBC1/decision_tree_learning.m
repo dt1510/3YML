@@ -10,13 +10,11 @@ if sum(binary_targets)==0
 elseif sum(binary_targets)==length(binary_targets)
     tree.class = 1;
     tree.op = {};
-    tree.score = length(binary_targets);
     return
     
 elseif isempty(attributes)
     tree.class = majority_value(binary_targets);
     tree.op = {};
-    %tree.score = tree.class == 1 ? length(1s) - length(0s) : length(0s) - length(1s);
     return
     
 else

@@ -10,7 +10,7 @@ n1 = 0;
 information_gain = zeros(1,length(attributes));
 
     function entropy = find_entropy(p, n)
-        if(p==0)
+        if(p==0 || n==0)
             entropy = 0;
         else
             entropy = -(p/(p+n))*log2(p/(p+n)) - (n/(p+n))*log2(n/(p+n));
@@ -18,9 +18,9 @@ information_gain = zeros(1,length(attributes));
     end
 
     function remainder = find_remainder(p0, n0, p1, n1)
-        p = p0 + p1;
-        n = n0 + n1;
-        remainder = ((p0+n0)/(p+n))*find_entropy(p0, n0) +  ((p1+n1)/(p+n))*find_entropy(p1, n1);
+        p_nested = p0 + p1;
+        n_nested = n0 + n1;
+        remainder = ((p0+n0)/(p_nested+n_nested))*find_entropy(p0, n0) +  ((p1+n1)/(p_nested+n_nested))*find_entropy(p1, n1);
     end
 
 for i = 1:length(attributes)
