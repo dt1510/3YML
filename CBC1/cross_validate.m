@@ -7,15 +7,15 @@ function [ info ] = cross_validate( examples, target_vector, fold_number )
     info.precision_rates = zeros(1,num_classes);
     info.recall_rates = zeros(1,num_classes);
     info.F1_measures = zeros(1,num_classes);
-    trees = {{},{},{},{},{},{}};
-    [test_examples, test_targets, train_examples, train_targets] = split_data(examples, target_vector, fold_number); 
+    trees = cell(1,6);
+    data = split_data(examples, target_vector, fold_number); 
     for i = 1:num_classes
-        trees{i} = gen_tree(train_examples, train_targets, i);
+        trees{i} = gen_tree(data.train_examples, data.train_targets, i);
     end
     
-    info.predictions = test_trees(trees,test_examples);
-    info.confusion_matrix = get_confusion_matrix(num_classes, test_targets, info.predictions);
-    info.error_rate = get_error_rate(test_targets, info.predictions);
+    info.predictions = test_trees(trees,data.test_examples);
+    info.confusion_matrix = get_confusion_matrix(num_classes, data.test_targets, info.predictions);
+    info.error_rate = get_error_rate(data.test_targets, info.predictions);
      for i = 1:num_classes
           info.precision_rates(i) = get_precision_rate(i, info.confusion_matrix);
           info.recall_rates(i) = get_recall_rate(i, info.confusion_matrix);
