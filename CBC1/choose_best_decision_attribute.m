@@ -1,21 +1,13 @@
-function attribute = choose_best_decision_attribute( examples, attributes, binary_targets )
-% chooses the best attribute that results in the highest information gain
-
-%attribute = attributes(1);
+function [attribute] = choose_best_decision_attribute( examples, attributes, binary_targets )
+% Chooses the best attribute that results in the highest information gain.
+% Returns "attribute", the index of attributes vector that corresponds to
+% the attribute with highest information gain.
 
 p0 = 0;
 n0 = 0;
 p1 = 0;
 n1 = 0;
 information_gain = zeros(1,length(attributes));
-
-    function entropy = find_entropy(p, n)
-        if (p == 0 || n == 0)
-            entropy = 0;
-        else
-            entropy = -(p/(p+n))*log2(p/(p+n)) - (n/(p+n))*log2(n/(p+n));
-        end
-    end
 
     function remainder = find_remainder(p0, n0, p1, n1)
         pos = p0 + p1;
@@ -40,15 +32,13 @@ information_gain = zeros(1,length(attributes));
                 end
             end
         end
-        p = sum(binary_targets);
-        n = length(binary_targets) - sum(binary_targets);
-       % p = p0 + p1;
-       % n = n0 + n1;
+        p = p0 + p1;
+        n = n0 + n1;
         information_gain(i) = find_entropy(p, n) - find_remainder(p0, n0, p1, n1);    
     end
 
-attribute = find(information_gain==max(information_gain), 1);   % finds the index of vector information_gain which has max value
-%attribute = attributes(index);
+% finds the index of vector information_gain which has max value
+attribute = find(information_gain==max(information_gain), 1);
 
 return
 
