@@ -1,20 +1,29 @@
 function tree = decision_tree_learning( examples, attributes, binary_targets )
 
-tree = struct('op',{{}},'kids',{{}},'class',{{}});
+tree = struct('op',{{}},'kids',{{}},'class',{{}}, 'entropy', {{}});
 
 if sum(binary_targets)==0
     tree.class = 0;
-    tree.op = {};
+    tree.entropy = 0;
     return
     
 elseif sum(binary_targets)==length(binary_targets)
     tree.class = 1;
-    tree.op = {};
+    tree.entropy = 0;
     return
     
 elseif isempty(attributes)
     tree.class = majority_value(binary_targets);
-    tree.op = {};
+    p = 0;
+    n = 0;
+    for i = 1:length(binary_targets)
+        if binary_targets(i) == 0
+            n = n + 1;
+        else
+            p = p + 1;
+        end
+    end
+    tree.entropy = find_entropy(p, n);
     return
     
 else
@@ -63,12 +72,6 @@ else
 
     tree.kids = {left_subtree, right_subtree}; 
     return
-                  
-%     tree.kids = cell(1,2);
-%     left_subtree =
-%     right_subtree =
-%     tree.kids{1} = left_subtree;
-%     tree.kids{2} = right_subtree;
     
 end
     

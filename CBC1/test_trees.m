@@ -20,6 +20,7 @@ function [ predicted_targets ] = test_trees( trees, examples )
     %combine outputs
     for i = 1:size(examples, 1)
         predicted_targets(i) = six_classify(trees, examples(i, :));
+        % predicted_targets(i) = six_classify_by_entropy(trees, examples(i, :));
     end    
     return
     
