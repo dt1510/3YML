@@ -1,8 +1,6 @@
-function [ predictions ] = cross_validate( examples, target_vector, fold_number )
-% Represents one fold of the 10-fold cross validation. Calls the split_data
-% function to get the training and test sets. Generates 6 trees using the
-% training set by calling gen_tree. Then calls test_trees to produce the
-% resulting vector of predictions for the test set.
+function [ predictions, test_targets ] = cross_validate( examples, target_vector, fold_number )
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
     trees = {{},{},{},{},{},{}};
     [test_examples, test_targets, train_examples, train_targets] = split_data(examples, target_vector, fold_number); 
     for i = 1:6
@@ -11,6 +9,5 @@ function [ predictions ] = cross_validate( examples, target_vector, fold_number 
     
     predictions = test_trees(trees,test_examples);
 
-    
 end
 

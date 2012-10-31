@@ -61,7 +61,6 @@ else
        % attributes(best_attribute) = [];
         left_subtree = decision_tree_learning(examples0, attributes, binary_targets0);
     end 
-    
     if isempty(examples1)
         right_subtree.class =  majority_value(binary_targets);
         right_subtree.op = {};
@@ -69,11 +68,11 @@ else
        % attributes(best_attribute) = [];
         right_subtree = decision_tree_learning(examples1, attributes, binary_targets1);
     end
-
     tree.kids = {left_subtree, right_subtree}; 
     return
     
 end
+
     
 end
 
