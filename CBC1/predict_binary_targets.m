@@ -1,7 +1,6 @@
 function [ predicted_binary_targets ] = predict_binary_targets( tree, testing_examples )
-% Calls the classify function for each example in the matrix
-% testing_examples and returns a column vector whose length is the number
-% of examples.
+%UNTITLED4 Summary of this function goes here
+%   Detailed explanation goes here
 
     predicted_binary_targets = zeros(size(testing_examples, 1), 1);
    % test = classify(tree, testing_examples(1,:));
