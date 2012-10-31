@@ -1,6 +1,7 @@
 function [ test_examples, test_targets, train_examples, train_targets ] = split_data( examples, targets , fold_number )
-%UNTITLED6 Summary of this function goes here
-%   Detailed explanation goes here
+% Splits the entire dataset into training set and test set depending on
+% which fold of the cross validation we are on. In each fold, the test set
+% will be a different 10th of the whole dataset.
 
     num_rows = size(examples, 1);
     
