@@ -1,4 +1,4 @@
-function emotion = six_classify_by_entropy( trees, example )
+function emotion = six_classify_entropy( trees, example )
 % Classifies an example to one of the six emotions.
 % Second combination algorithm: by entropy of the leaf node
 

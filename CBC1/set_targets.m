@@ -1,6 +1,5 @@
 function [ binary_targets ] = set_targets( labels, target_label )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%Converts targets to its binary form.
     binary_targets = zeros(1,length(labels));
     for i = 1:length(labels)
         if labels(i) == target_label

@@ -1,4 +1,4 @@
-function emotion = six_classify( trees, example )
+function emotion = six_classify_height( trees, example )
 % Classifies an example to one of the six emotions.
 % First combination algorithm: by depth of the tree to the leaf node
 
