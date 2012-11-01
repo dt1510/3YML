@@ -1,7 +1,0 @@
-function [ output_args ] = bin_classify_size( input_args )
-%BIN_CLASSIFY_SIZE classification based on the size of binary targets
-%confirming the 
-
-
-end
-
