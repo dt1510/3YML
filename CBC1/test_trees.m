@@ -11,12 +11,6 @@ function [ predicted_targets ] = test_trees( trees, examples )
 % number of binary targets (in this case, m=6)
 % targets
 
-    predicted_targets = zeros(size(examples,1) ,1);
-    predicted_binary_targets = zeros(size(examples,1),length(trees));
-    for i = 1:length(trees)
-        predicted_binary_targets(:,i) = predict_binary_targets(trees{i}, examples);
-    end
-
     %combine outputs
     for i = 1:size(examples, 1)
         predicted_targets(i) = six_classify(trees, examples(i, :));
