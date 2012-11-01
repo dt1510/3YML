@@ -7,7 +7,7 @@ classes = zeros(1, length(trees));
 for i = 1:length(trees)
     [class, height] = bin_classify_height(trees{i}, example);
     if class
-        classes(i) = height;
+        classes(i) = 1/(height+1);
     else
         classes(i) = 40;
     end

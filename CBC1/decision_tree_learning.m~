@@ -18,7 +18,7 @@ elseif isempty(attributes)
 else
     best_attribute = choose_best_decision_attribute(examples, attributes, binary_targets);
     tree.op = attributes(best_attribute);
-    tree.entropy = find_entropy_from_btargets(binary_targets);  % entropy field for each internal node
+<<<<<<< HEAD
     branch_examples = cell(1,2);
     branch_bts = cell(1,2);
     num_rows = [0,0];
@@ -26,9 +26,14 @@ else
         branch_bts{i} = zeros(length(binary_targets)); 
         branch_examples{i} = zeros(length(binary_targets),45);
     end
-  
+    
+   for j = 1:length(binary_targets)
+=======
+
+
     for j = 1:length(binary_targets)
-            
+            tree.entropy = find_entropy_from_btargets(binary_targets);  % entropy field for each internal node
+>>>>>>> 71406e017a4e9ba05f6c163294f48a53f1fe61f8
         new_row = examples(j,:);
         if examples(j, attributes(best_attribute)) == 0
             num_rows(1) = num_rows(1) + 1;
