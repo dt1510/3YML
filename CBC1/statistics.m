@@ -1,6 +1,5 @@
 function [ stats ] = statistics( examples, target_vector )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%Performs cross validation and statistics for every fold.
 
     stats = struct('confusion_matrix',[], 'avg_classification_rate',[], 'avg_recall_rates',[], 'avg_precision_rates',[], 'avg_F1_measures',[]); 
     classifier = struct('predictions',[],'confusion_matrix',[],'error_rate',[],'precision_rates',[], 'recall_rates',[],'F1_measures',[]);
