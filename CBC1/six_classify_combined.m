@@ -7,12 +7,11 @@ classes = zeros(1, length(trees));
 for i = 1:length(trees)
     [class, height] = bin_classify_height(trees{i}, example);
     [class2, entropy] = bin_classify_entropy(trees{i}, example);    
-    if class && class2
-        classes(i) = height / entropy;
-    elseif class        
-        classes(i) = height;
-    else
-        classes(i) = 0;
+    if class
+        classes(i) = classes(i) + 1/(height+1);
+    end
+    if class2
+        classes(i) = classes(i) + 1-entropy;
     end
 end
 
