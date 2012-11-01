@@ -9,11 +9,11 @@ for i = 1:length(trees)
     if class
         classes(i) = 1/(height+1);
     else
-        classes(i) = 40;
+        classes(i) = 0;
     end
 end
 
-[~, emotion] = min(classes);
+[~, emotion] = max(classes);
      
 end
 
