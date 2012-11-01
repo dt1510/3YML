@@ -1,7 +1,8 @@
 function tree = decision_tree_learning( examples, attributes, binary_targets )
 
-    tree = struct('op',{{}},'kids',{{}},'class',{{}}, 'entropy', {{}});
+    tree = struct('op',{{}},'kids',{{}},'class',{{}}, 'entropy', {{}}, 'size', {{}});
     tree.entropy = find_entropy_from_btargets(binary_targets);
+    tree.size = length(binary_targets);
 
     if sum(binary_targets)==0
         tree.class = 0;
@@ -49,10 +50,11 @@ function tree = decision_tree_learning( examples, attributes, binary_targets )
     attributes(best_attribute) = [];
     subtrees = cell(1,2);
     for i = 1:2
-        subtrees{i} = struct('op',{{}},'kids',{{}},'class',{{}},'entropy', {{}});
+        subtrees{i} = struct('op',{{}},'kids',{{}},'class',{{}},'entropy', {{}},'size',{{}});
         if isempty(branch_examples{i})
             subtrees{i}.class =  majority_value(binary_targets);
             subtrees{i}.entropy = find_entropy_from_btargets(branch_bts{i});
+            subtrees{i}.size = length(branch_bts{i});
         else
             subtrees{i} = decision_tree_learning(branch_examples{i}, attributes, branch_bts{i}); 
         end
