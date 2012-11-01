@@ -11,7 +11,7 @@ function [ class, score ] = bin_classify_combined( tree, example )
         else
             class = tree.class;            
         end
-        score = score + tree.entropy/(height*height);
+        score = score + tree.entropy/height;
     end
 
     [class, score] = bin_classify_combined_helper( tree, example, 1);    
