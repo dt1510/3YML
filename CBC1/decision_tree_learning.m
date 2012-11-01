@@ -20,6 +20,7 @@ elseif isempty(attributes)
 else
     best_attribute = choose_best_decision_attribute(examples, attributes, binary_targets);
     tree.op = attributes(best_attribute);
+    tree.entropy = find_entropy_from_btargets(binary_targets);  % entropy field for each internal node
     examples0 = zeros(length(binary_targets),45);
     examples1 = zeros(length(binary_targets),45);
     num_rows0 = 0;
