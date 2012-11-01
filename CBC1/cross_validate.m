@@ -16,7 +16,7 @@ function [ info ] = cross_validate( examples, target_vector, fold_number )
         trees{i} = gen_tree(data.train_examples, data.train_targets, i);
     end
     
-    info.predictions = test_trees(trees,data.test_examples);
+    info.predictions = testTrees(trees,data.test_examples);
     info.confusion_matrix = get_confusion_matrix(num_classes, data.test_targets, info.predictions);
     info.error_rate = get_error_rate(data.test_targets, info.predictions);
      for i = 1:num_classes

@@ -1,4 +1,4 @@
-function [ predicted_targets ] = test_trees( trees, examples )
+function [ predicted_targets ] = testTrees( trees, examples )
 
 % Takes as arguments the 6 trained trees corresponding to the 6 emotions,
 % and the matrix of test examples. Combines the 6 trees into one classifer,
