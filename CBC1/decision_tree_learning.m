@@ -1,21 +1,21 @@
 function tree = decision_tree_learning( examples, attributes, binary_targets )
 
-tree = struct('op',{{}},'kids',{{}},'class',{{}}, 'entropy', {{}});
-tree.entropy = find_entropy_from_btargets(binary_targets);
+    tree = struct('op',{{}},'kids',{{}},'class',{{}}, 'entropy', {{}});
+    tree.entropy = find_entropy_from_btargets(binary_targets);
 
-if sum(binary_targets)==0
-    tree.class = 0;
-    return
-    
-elseif sum(binary_targets)==length(binary_targets)
-    tree.class = 1;
-    return
-    
-elseif isempty(attributes)
-    tree.class = majority_value(binary_targets);
-    return
-    
-else
+    if sum(binary_targets)==0
+        tree.class = 0;
+        return
+    end
+    if sum(binary_targets)==length(binary_targets)
+        tree.class = 1;
+        return
+    end
+    if isempty(attributes)
+        tree.class = majority_value(binary_targets);
+        return
+    end
+
     best_attribute = choose_best_decision_attribute(examples, attributes, binary_targets);
     tree.op = attributes(best_attribute);
     tree.entropy = find_entropy_from_btargets(binary_targets);  % entropy field for each internal node
@@ -52,15 +52,12 @@ else
         subtrees{i} = struct('op',{{}},'kids',{{}},'class',{{}},'entropy', {{}});
         if isempty(branch_examples{i})
             subtrees{i}.class =  majority_value(binary_targets);
-            subtrees{i}.entropy = find_entropy_from_btargets(binary_targets);
+            subtrees{i}.entropy = find_entropy_from_btargets(branch_bts{i});
         else
             subtrees{i} = decision_tree_learning(branch_examples{i}, attributes, branch_bts{i}); 
         end
         tree.kids{i} = subtrees{i};
     end
-
-    
-end
 
     
 end
