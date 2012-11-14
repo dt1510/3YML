@@ -7,10 +7,8 @@ if size(net, 1) == 1,
     predictions = NNout2labels(t);
 elseif size(net, 1) == 6,
     for i=1:6,
-        results(:,i) = sim(net{i}, x2);
+        predictions
     end
-    [V, predictions] = max(results');
-    predictions = predictions';
 end
 
 
