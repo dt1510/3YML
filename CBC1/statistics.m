@@ -6,9 +6,9 @@ function [ stats ] = statistics( examples, target_vector )
     num_classes = 6;
     num_folds = 10;
     
-    randomise_rows(examples);
+    [randomised_examples, randomised_targets] = randomise_rows(examples, target_vector);
     for i = 1:num_folds
-        info = cross_validate(examples, target_vector, i);
+        info = cross_validate(randomised_examples,randomised_targets, i);
         classifier(i).predictions = info.predictions;
         classifier(i).confusion_matrix = info.confusion_matrix;  
         classifier(i).error_rate = info.error_rate; 

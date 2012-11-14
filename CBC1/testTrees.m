@@ -7,6 +7,7 @@ function [ predicted_targets ] = testTrees( trees, examples )
 % labels for all the examples in the test set.
 
     %combine outputs
+    predicted_targets = zeros(size(examples,1),1);
     for i = 1:size(examples, 1)
         predicted_targets(i) = six_classify_combined(trees, examples(i, :));
     end    
