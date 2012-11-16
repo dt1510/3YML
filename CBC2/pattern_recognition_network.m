@@ -64,7 +64,7 @@ view(net)
 
 % Plots
 % Uncomment these lines to enable various plots.
-%figure, plotperform(tr)
-%figure, plottrainstate(tr)
-%figure, plotconfusion(targets,outputs)
-%figure, ploterrhist(errors)
+figure, plotperform(tr)
+figure, plottrainstate(tr)
+figure, plotconfusion(targets,outputs)
+figure, ploterrhist(errors)
