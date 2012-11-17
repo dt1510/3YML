@@ -12,7 +12,7 @@ function [ stats ] = get_stats ( x ,y, net )
         info{i} = cross_validate(rand_x, rand_y, i, net);
     end
     
-    stats = struct('confusion_matrix',[], 'avg_classification_rate',[], 'avg_recall_rates',[], 'avg_precision_rates',[], 'avg_F1_measures',[]); 
+    stats = struct('confusion_matrix',[], 'avg_classification_rate',[], 'avg_recall_rates',[], 'avg_precision_rates',[], 'avg_F1_measures_over_folds',[], 'avg_F1_measures_over_classes',[]); 
     classifier = cell(1,num_folds);
     
     for i = 1:num_folds
@@ -21,27 +21,29 @@ function [ stats ] = get_stats ( x ,y, net )
     end
     
     stats.confusion_matrix = zeros(num_classes,num_classes);
+    stats.avg_F1_measures_over_classes = zeros(1,num_folds);
     for i = 1:num_folds
         stats.confusion_matrix = stats.confusion_matrix + classifier{i}.confusion_matrix;
         stats.avg_classification_rate = stats.avg_classification_rate + classifier{i}.error_rate;
-        %stats.avg_F1_measures_over_classes;
+        for j = 1:num_classes
+            stats.avg_F1_measures_over_classes(i) = stats.avg_F1_measures_over_classes + classifier{i}.F1_measures(j);
+        end
+        stats.avg_F1_measures_over_classes(i) = stats.avg_F1_measures_over_classes(i) / num_classes; 
     end
     stats.confusion_matrix = stats.confusion_matrix / num_folds;
-    stats.avg_classification_rate = stats.avg_classification_rate / num_folds;
-    
-    %stats.avg_classification_rate = 1 - sum([classifier.error_rate])/num_folds;
+    stats.avg_classification_rate = 1 - stats.avg_classification_rate / num_folds;
     stats.avg_recall_rates = zeros(1,num_classes);
     stats.avg_precision_rates = zeros(1,num_classes);
-    stats.avg_F1_measures = zeros(1,num_classes);
+    stats.avg_F1_measures_over_folds = zeros(1,num_classes);
     for i = 1:num_classes
         for j = 1:num_folds
             stats.avg_precision_rates(i) = stats.avg_precision_rates(i) + classifier{j}.precision_rates(i);
             stats.avg_recall_rates(i) = stats.avg_recall_rates(i) + classifier{j}.recall_rates(i);
-            stats.avg_F1_measures(i) = stats.avg_F1_measures(i) + classifier{j}.F1_measures(i);
+            stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures(i) + classifier{j}.F1_measures(i);
         end
         stats.avg_precision_rates(i) = stats.avg_precision_rates(i) / num_folds;
         stats.avg_recall_rates(i) = stats.avg_recall_rates(i) / num_folds;
-        stats.avg_F1_measures(i) = stats.avg_F1_measures(i) / num_folds;
+        stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) / num_folds;
     end
     
 
