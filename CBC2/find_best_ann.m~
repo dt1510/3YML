@@ -1,6 +1,0 @@
-function [ anns ] = find_best_ann( input_args )
-%generates anns and rereturns anns ordered by their performance starting with the best ann.
-
-
-end
-
