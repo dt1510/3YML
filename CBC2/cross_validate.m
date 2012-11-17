@@ -1,4 +1,4 @@
-function [ info ] = cross_validate_six_output( x, y, fold_number, net )
+function [ info ] = cross_validate( x, y, fold_number, net )
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 
