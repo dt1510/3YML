@@ -1,0 +1,12 @@
+function [ stats ] = ANN_main( x, y )
+%ANN_main is the main function which takes a matrix x of examples and
+%vector y of target values. Invokes all other functions in our ANN
+%assignment.
+
+[x2, y2] = ANNdata(x,y);
+
+
+
+
+end
+
