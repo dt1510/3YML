@@ -1,5 +1,5 @@
 
-function [ performance] = test_ann( x, y, net)
+function [ performance] = get_performance( x, y, net)
 %Computes a classification rate.
     [x2, y2] = ANNdata(x, y);    
     [net] = configure(net, x2, y2);
