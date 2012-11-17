@@ -1,0 +1,4 @@
+%playing with precision and recall rate.
+for precision = 0:0.1:1
+    for recall = 0:0.1:1
+        
