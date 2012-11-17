@@ -4,4 +4,3 @@ function [ net ] = gen_bare_ann()
     [net] = feedforwardnet([10],'trainlm');
 
 end
-
