@@ -3,6 +3,7 @@ function [ net, tr ] = gen_one_ann(x, y)
     [x2, y2] = ANNdata(x, y);
     [net] = gen_bare_ann();
     [net] = configure(net, x2, y2);
-    [net, tr] = train(net, x2, y2);    
+    [net] = split_training_val(net);
+    [net, tr] = train(net, x2, y2);
 end
 
