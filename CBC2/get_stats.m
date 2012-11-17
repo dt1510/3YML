@@ -20,6 +20,7 @@ function [ stats ] = get_stats ( x ,y, net )
         classifier{i} = info;
     end
     
+    stats.avg_classification_rate = 0;
     stats.confusion_matrix = zeros(num_classes,num_classes);
     stats.avg_F1_measures_over_classes = zeros(1,num_folds);
     for i = 1:num_folds
