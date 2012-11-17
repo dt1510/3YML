@@ -7,8 +7,14 @@ function [ info ] = cross_validate( x, y, fold_number, net )
     info.precision_rates = zeros(1,num_classes);
     info.recall_rates = zeros(1,num_classes);
     info.F1_measures = zeros(1,num_classes);
-    data = split_data(x, y, fold_number); 
-
+    data = split_data(x, y, fold_number);
+    if size(net,1) == 6
+        for i = 1:6
+            [net{i}] = train(net{i}, data.train_examples, data.train_targets);
+        end
+    else
+        net = train(net, data.train_examples, data.train_targets);
+    end
     test_examples = data.test_examples';
     info.predictions = testANN(net,test_examples);
     info.confusion_matrix = get_confusion_matrix(num_classes, data.test_targets, info.predictions');
