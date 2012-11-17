@@ -4,20 +4,14 @@ function [ stats ] = get_stats ( x ,y, net )
 
     rand_x = x;
     rand_y = y;
-    info = cell(1,6);
     num_classes = 6;
     num_folds = 10;
-    
-    for i = 1:num_folds
-        info{i} = cross_validate(rand_x, rand_y, i, net);
-    end
     
     stats = struct('confusion_matrix',[], 'avg_classification_rate',[], 'avg_recall_rates',[], 'avg_precision_rates',[], 'avg_F1_measures_over_folds',[], 'avg_F1_measures_over_classes',[]); 
     classifier = cell(1,num_folds);
     
     for i = 1:num_folds
-        info = cross_validate(rand_x,rand_y, i, net);
-        classifier{i} = info;
+        classifier{i} = cross_validate(rand_x,rand_y, i, net);
     end
     
     stats.avg_classification_rate = 0;
