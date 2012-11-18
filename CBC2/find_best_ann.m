@@ -7,8 +7,7 @@ function [ anns ] = find_best_ann( x, y )
     anns = cell(size(nets, 1), 3);    
     ord = ones(size(nets, 1), 1);
     for i=1:1:size(nets)        
-        anns{i,1} = nets{i};
-        [ord(i), tr] = get_performance(x, y, nets{i});
+        [ord(i), anns{i,1}, tr] = get_performance(x, y, nets{i});         
     end
     %sort anns according to their performance
     [ord2, idx] = sort(ord, 'descend');

@@ -1,10 +1,14 @@
 function [ anns ] = gen_anns()
 %generates an untrained ann.
 
+    %training_functions = {'trainlm','traingda'};
     training_functions = {'trainlm'};
-    activation_functions = {'tansig', 'purelin'};
-    neurons = [10, 100];    
-    hidden_layers = [1, 2];
+    %activation_functions = {'tansig', 'purelin'};
+    activation_functions = {'tansig'};
+    neurons = [10, 100];
+    %neurons = [10];
+    %hidden_layers = [1, 2];
+    hidden_layers = [1];
     anns = cell(size(training_functions,2)*size(neurons,2)*size(hidden_layers,2)*size(activation_functions,2), 1);
     i=0;
     for i1=1:1:size(training_functions,2)
@@ -16,7 +20,7 @@ function [ anns ] = gen_anns()
                     [net] = feedforwardnet(layers_vector,training_functions{i1});
                     for j1=1:hidden_layers(i3)
                         net.layers{j1}.transferFcn = activation_functions{i4};
-                    end
+                    end             
                     anns{i} = net;
                 end
             end

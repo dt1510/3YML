@@ -1,7 +1,7 @@
-function [ performance, tr] = get_performance( x, y, net)
+function [ performance, net, tr] = get_performance( x, y, net)
 %Computes a classification rate.
     [x2, y2] = ANNdata(x, y);
-    [net] = configure(net, x2, y2);
+    [net] = configure(net, x2, y2);    
     [net] = split_training_val(net);
     %net.trainParam.epochs = 2;
     net.trainParam.time = 10;
