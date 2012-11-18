@@ -1,5 +1,7 @@
 function [ anns ] = find_best_ann( x, y )
-%generates anns and them ordered by their performance starting with the best ann.
+%generates anns and them ordered by their performance.
+%Depending on the performance measure in get_performance,
+%the list may start with the best or the worst ann.
 %returns a row in a format (network, performance, original order).
     nets = gen_anns();    
     anns = cell(size(nets, 1), 3);    
