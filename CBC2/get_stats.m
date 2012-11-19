@@ -2,8 +2,6 @@ function [ stats ] = get_stats ( x ,y, net )
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
-    unconfigure(net);
-
     rand_x = x;
     rand_y = y;
     num_classes = 6;
