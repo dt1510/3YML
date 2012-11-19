@@ -17,12 +17,9 @@ function [ info ] = cross_validate( x, y, fold_number, net )
             [net{i}] = train(net{i}, train_examples, train_targets(i,:));
         end
     else
-        %[net] = split_training_val(net);
         net.divideParam.trainRatio = 100/100;
         net.divideParam.valRatio = 0/100;
         net.trainParam.epochs = 3;
-        %net.trainParam.time = 20;
-
         net = train(net, train_examples, train_targets);
     end
     [test_examples, ~] = ANNdata(data.test_examples, data.test_targets);
