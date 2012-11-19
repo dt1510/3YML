@@ -1,14 +1,14 @@
 function [ anns ] = gen_anns()
 %generates an untrained ann.
 
-    %training_functions = {'trainlm','traingda'};
-    training_functions = {'trainlm'};
-    %activation_functions = {'tansig', 'purelin'};
-    activation_functions = {'tansig'};
+    training_functions = {'trainlm','traingd'};
+    %training_functions = {'trainlm'};
+    activation_functions = {'tansig', 'purelin'};
+    %activation_functions = {'tansig'};
     neurons = [10, 100];
     %neurons = [10];
-    %hidden_layers = [1, 2];
-    hidden_layers = [1];
+    hidden_layers = [1, 2];
+    %hidden_layers = [1];
     anns = cell(size(training_functions,2)*size(neurons,2)*size(hidden_layers,2)*size(activation_functions,2), 1);
     i=0;
     for i1=1:1:size(training_functions,2)
