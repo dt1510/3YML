@@ -21,7 +21,8 @@ function [ stats ] = get_stats ( x ,y, net )
         stats.confusion_matrix = stats.confusion_matrix + classifier{i}.confusion_matrix;
         stats.avg_classification_rate = stats.avg_classification_rate + classifier{i}.error_rate;
         for j = 1:num_classes
-            stats.avg_F1_measures_over_classes(i) = stats.avg_F1_measures_over_classes(i) + classifier{i}.F1_measures(j);
+            %stats.avg_F1_measures_over_classes(i) = stats.avg_F1_measures_over_classes(i) + classifier{i}.F1_measures(j);
+            stats.avg_F1_measures_over_classes(i) = stats.avg_F1_measures_over_classes(i) + get_F1_measure(classifier{i}.recall_rates(j), classifier{i}.precision_rates(j));
         end
         stats.avg_F1_measures_over_classes(i) = stats.avg_F1_measures_over_classes(i) / num_classes; 
     end
@@ -34,7 +35,8 @@ function [ stats ] = get_stats ( x ,y, net )
         for j = 1:num_folds
             stats.avg_precision_rates(i) = stats.avg_precision_rates(i) + classifier{j}.precision_rates(i);
             stats.avg_recall_rates(i) = stats.avg_recall_rates(i) + classifier{j}.recall_rates(i);
-            stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) + classifier{j}.F1_measures(i);
+            %stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) + classifier{j}.F1_measures(i);
+            stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) + get_F1_measure(classifier{j}.recall_rates(i), classifier{j}.precision_rates(i));
         end
         stats.avg_precision_rates(i) = stats.avg_precision_rates(i) / num_folds;
         stats.avg_recall_rates(i) = stats.avg_recall_rates(i) / num_folds;
