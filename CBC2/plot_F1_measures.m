@@ -1,5 +1,5 @@
 function [ ] = plot_F1_measures( f1_vector1, f1_vector6 )
-% plot_F1_measures takes two 10x1 vectors as arguments. These store the
+% plot_F1_measures takes two 1x10 vectors as arguments. These store the
 % average F1 measures over all 6 classes obtained in each fold of the cross
 % validation. The vectors are obtained in get_stats.
 
