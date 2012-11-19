@@ -11,6 +11,9 @@ function [ info ] = cross_validate( x, y, fold_number, net )
     [train_examples, train_targets] = ANNdata(data.train_examples, data.train_targets); 
     if size(net,1) == 6
         for i = 1:6
+            net{i}.divideParam.trainRatio = 100/100;
+            net{i}.divideParam.valRatio = 0/100;
+            net{i}.trainParam.epochs = 3;
             [net{i}] = train(net{i}, train_examples, train_targets(i,:));
         end
     else
