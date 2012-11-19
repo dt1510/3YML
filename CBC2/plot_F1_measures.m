@@ -11,7 +11,7 @@ bar(y, 'grouped');
 title('Average F1 Measures Per Fold');
 xlabel('Fold number');
 ylabel('Avg F1 Measure Over All 6 Emotions');
-legend('6-output network', '6 single-output network');
+legend('6-output network', '6 single-output networks');
 
 
 end
