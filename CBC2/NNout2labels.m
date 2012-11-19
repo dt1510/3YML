@@ -9,4 +9,4 @@ function y = NNout2labels(x)
 %OUT: y: a one-column label representation
 
 [v I] = max(x);
-y = I';
+y = I'
