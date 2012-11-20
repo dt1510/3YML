@@ -1,4 +1,4 @@
-function [ info ] = cross_validate( x, y, fold_number, net )
+function [ info ] = cross_validate( x, y, fold_number, net, epochs )
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -13,13 +13,13 @@ function [ info ] = cross_validate( x, y, fold_number, net )
         for i = 1:6
             net{i}.divideParam.trainRatio = 100/100;
             net{i}.divideParam.valRatio = 0/100;
-           % net{i}.trainParam.epochs = 30;
+            net{i}.trainParam.epochs = epochs(i);
             [net{i}] = train(net{i}, train_examples, train_targets(i,:));
         end
     else
         net.divideParam.trainRatio = 100/100;
         net.divideParam.valRatio = 0/100;
-        %net.trainParam.epochs = 30;
+        net.trainParam.epochs = epochs;
         net = train(net, train_examples, train_targets);
     end
     [test_examples, ~] = ANNdata(data.test_examples, data.test_targets);
