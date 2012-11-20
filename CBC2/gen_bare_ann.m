@@ -7,7 +7,7 @@ function [ net ] = gen_bare_ann()
     %net.layers{1}.transferFcn = 'tansig';
     %net.trainParam.lr = 0.2;
     
-    [net] = feedforwardnet([10,10],'trainlm');
+    [net] = feedforwardnet([5,5],'trainlm');
     net.layers{1}.transferFcn = 'purelin';
     net.trainParam.min_grad = 1*(power(10,-4));
 end
