@@ -10,7 +10,7 @@ function [ data ] = split_data( examples, targets , fold_number )
         test_start_index = 1;
         test_end_index = round(num_rows/10);
     else
-        test_start_index = round((fold_number-1)*num_rows/10);
+        test_start_index = round(((fold_number-1)*num_rows/10)+1);
         test_end_index = round((fold_number)*num_rows/10);   
     end
     data.test_examples = examples(test_start_index:test_end_index, :);

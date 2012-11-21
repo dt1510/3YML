@@ -1,4 +1,4 @@
-function [ stats ] = get_stats ( x ,y, net, epochs )
+function [ stats ] = get_stats ( x ,y, net )
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -11,7 +11,7 @@ function [ stats ] = get_stats ( x ,y, net, epochs )
     classifier = cell(1,num_folds);
     
     for i = 1:num_folds
-        classifier{i} = cross_validate(rand_x,rand_y, i, net, epochs);
+        classifier{i} = cross_validate(rand_x,rand_y, i, net);
     end
     
     stats.avg_classification_rate = 0;
