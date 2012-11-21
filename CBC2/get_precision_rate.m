@@ -15,7 +15,7 @@ for i = 1:length(conf_matrix)
 end
 
 if tp+fp == 0
-    precision_rate = 0;
+    precision_rate = -1;
 else
     precision_rate = (tp / (tp + fp))*100;
 end

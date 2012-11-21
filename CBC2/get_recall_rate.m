@@ -15,7 +15,7 @@ for i = 1:length(conf_matrix)
 end
 
 if tp+fn == 0
-    recall_rate = 0;
+    recall_rate = -1;
 else
     recall_rate = (tp / (tp + fn))*100;
 end
