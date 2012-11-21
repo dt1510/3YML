@@ -9,5 +9,5 @@ function [ net ] = gen_bare_ann()
     
     [net] = feedforwardnet([10,10],'trainlm');
     net.layers{1}.transferFcn = 'purelin';
-    net.trainParam.min_grad = 1*(power(10,-4));
+    %net.trainParam.min_grad = 1*(power(10,-4));
 end

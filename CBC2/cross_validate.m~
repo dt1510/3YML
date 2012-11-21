@@ -16,10 +16,9 @@ function [ info ] = cross_validate( x, y, fold_number, net)
             net{i}.divideParam.valRatio = 33/100;
             net{i}.divideParam.testRatio = 0/100;
             %net{i}.trainParam.epochs = epochs(i);
-            [net{i}] = train(net{i}, train_examples, train_targets(i,:));           
+            [net{i}] = train(net{i}, train_examples, train_targets(i,:));
         end
     else
-        net.divideFcn = 'divideint';
         net.divideParam.trainRatio = 67/100;
         net.divideParam.valRatio = 33/100;
         net.divideParam.testRatio = 0/100;
