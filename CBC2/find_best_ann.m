@@ -9,8 +9,6 @@ function [ anns ] = find_best_ann( x, y )
     for i=1:1:size(nets)
         [anns{i,1}, tr] = train_ann(nets{i}, x, y);
         [ord(i), classification_rate] = get_performance(anns{i}, tr, x, y);
-        %classification_rate
-        %i
     end
     %sort anns according to their performance
     [ord2, idx] = sort(ord, 'descend');
