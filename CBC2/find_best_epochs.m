@@ -2,8 +2,7 @@ function [ epochs ] = find_best_epochs( x, y, untrained_net )
 % find the best number of epochs to the given network
 
     [x2, y2] = ANNdata(x, y);
-    if size(untrained_net,1) == 1
-        %[untrained_net] = configure(untrained_net, x2, y2);    
+    if size(untrained_net,1) == 1   
         [untrained_net] = split_training_val(untrained_net);
         untrained_net.trainParam.epochs = 1000;
         [~, tr] = train(untrained_net, x2, y2);
@@ -18,7 +17,6 @@ function [ epochs ] = find_best_epochs( x, y, untrained_net )
             [~, tr] = train(untrained_net{i}, x2, y2(i,:));
             [~, index] = min(tr.vperf);
             epochs(i) = tr.epoch(index);
-            %figure, plotperform(tr)
         end
     end
 end
