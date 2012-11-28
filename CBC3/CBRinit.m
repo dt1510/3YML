@@ -6,7 +6,7 @@ function [ cbr ] = CBRinit( x, y )
             cbr = add_case(cbr, single_case);
     end
     
-    %cbr = compute_weights(cbr);
+    cbr = compute_weights(cbr);
     
 end
 
