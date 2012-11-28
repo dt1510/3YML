@@ -1,0 +1,10 @@
+function [ single_case ] = retrieve( cbr, newcase )
+%RETRIEVE finds the most similar case from the cbr memory.
+
+    for i = 1:length(cbr.cases)
+             = similarity(newcase, cbr.cases(i))
+    end
+
+
+end
+
