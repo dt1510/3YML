@@ -1,7 +1,12 @@
-function [ classification_rate ] = test( x, y )
+function [ classification_rate ] = test( x, y, use_percentage)
 %TEST tests a classification rate of the current CBR implementation.
+%A user can specify the percentage of data, the tests should be performed
+%with.
+    if nargin == 2
+        use_percentage = 1;
+    end    
     training_ratio = 0.67;
-    total_size = length(y);
+    total_size = ceil(length(y)*use_percentage);
     training_size = floor(total_size*training_ratio);    
     x_train = x(1:training_size, :);
     y_train = y(1:training_size);

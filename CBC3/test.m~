@@ -1,9 +1,8 @@
-function [ classification_rate ] = test( x, y )
-%TEST for testing and debugging purposes.
-    percentage
-    training_ratio = 0.66;
+function [ classification_rate ] = test( x, y, percentage )
+%TEST tests a classification rate of the current CBR implementation.
+    training_ratio = 0.67;
     total_size = length(y);
-    training_size = total_size*training_ratio;    
+    training_size = floor(total_size*training_ratio);    
     x_train = x(1:training_size, :);
     y_train = y(1:training_size);
     
