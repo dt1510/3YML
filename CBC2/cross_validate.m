@@ -15,7 +15,6 @@ function [ info ] = cross_validate( x, y, fold_number, net)
             net{i}.divideParam.trainRatio = 67/100;
             net{i}.divideParam.valRatio = 33/100;
             net{i}.divideParam.testRatio = 0/100;
-            %net{i}.trainParam.epochs = epochs(i);
             [net{i}] = train(net{i}, train_examples, train_targets(i,:));           
         end
     else
@@ -23,7 +22,6 @@ function [ info ] = cross_validate( x, y, fold_number, net)
         net.divideParam.trainRatio = 67/100;
         net.divideParam.valRatio = 33/100;
         net.divideParam.testRatio = 0/100;
-       % net.trainParam.epochs = epochs;
         net = train(net, train_examples, train_targets);
     end
     [test_examples, ~] = ANNdata(data.test_examples, data.test_targets);
