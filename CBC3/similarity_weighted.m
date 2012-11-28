@@ -6,8 +6,7 @@ function [ similarity_distance ] = similarity_weighted( cbr, single_case1, singl
         class = single_case1.y;
     else if not(single_case2.y == -1)
         class = single_case2.y;
-    end
-        
-    similarity_distance = sum(abs(single_case1.x - single_case2.x) .* cbr.class_weights(class));
+    end      
+    similarity_distance = sum(abs(single_case1.x - single_case2.x) .* cbr.class_weights(class));    
 end
 
