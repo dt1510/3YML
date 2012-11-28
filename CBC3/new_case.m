@@ -1,5 +1,5 @@
-function [ case_struct ] = new_case( input_vector, target_value )
+function [ single_case ] = new_case( input_vector, target_value )
 %CASE generates a case structure.    
-    case_struct = struct('x', input_vector, 'y', target_value);
+    single_case = struct('x', input_vector, 'y', target_value);
 end
 
