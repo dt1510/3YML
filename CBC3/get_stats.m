@@ -1,10 +1,11 @@
-function [ stats ] = get_stats ( x ,y, cbr )
+function [ stats ] = get_stats ( x ,y)
 %GET_STATS is the main function which calls cross_validate.m 10 times
 
     rand_x = x;
     rand_y = y;
     num_classes = 6;
     num_folds = 10;
+    cbr = CBRinit(x,y);
     stats = struct('confusion_matrix',[], 'avg_classification_rate',[], 'avg_recall_rates',[], 'avg_precision_rates',[], 'avg_F1_measures_over_folds',[]); 
     classifier = cell(1,num_folds);
     for i = 1:num_folds
