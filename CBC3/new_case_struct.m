@@ -3,7 +3,8 @@ function [ case_struct ] = new_case_struct()
 %like RETRIEVE can be performed.
 
 cases = [];
-case_struct = struct('cases', cases);
+typicality = [];
+case_struct = struct('cases', cases, 'typicality',typicality);
 
 end
 
