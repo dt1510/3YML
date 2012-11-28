@@ -1,6 +1,7 @@
 function [ info ] = cross_validate( x, y, fold_number)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%CROSS_VALIDATE performs one fold of the cross validation, according to the
+%current fold number. Stores the cross-validation results of the current
+%fold in struct 'info'
 
     num_classes = 6;
     info = struct('predictions',[],'confusion_matrix',[],'error_rate',[],'precision_rates',[],'recall_rates',[],'F1_measures',[]);
