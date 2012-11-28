@@ -1,0 +1,10 @@
+function [ predictions ] = testCBR( cbr, x2 )
+%TESTCBR given the input vectors, returns its corresponding target value
+%according to the trained cbr.
+    for i = 1:size(x2, 1)
+        newcase = new_unclassified_case(x2(i, :));
+        
+    end
+
+end
+
