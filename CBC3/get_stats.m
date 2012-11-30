@@ -1,4 +1,4 @@
-function [ stats ] = get_stats ( x ,y)
+function [ stats ] = get_stats ( x ,y, similarity_function)
 %GET_STATS is the main function which calls cross_validate.m 10 times
 
     rand_x = x;
@@ -8,7 +8,7 @@ function [ stats ] = get_stats ( x ,y)
     stats = struct('confusion_matrix',[], 'avg_classification_rate',[], 'avg_recall_rates',[], 'avg_precision_rates',[], 'avg_F1_measures_over_folds',[]); 
     classifier = cell(1,num_folds);
     for i = 1:num_folds
-        classifier{i} = cross_validate(rand_x,rand_y, i);
+        classifier{i} = cross_validate(rand_x,rand_y, i, similarity_function);
     end 
     stats.avg_classification_rate = 0;
     stats.confusion_matrix = zeros(num_classes,num_classes);
