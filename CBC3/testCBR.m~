@@ -6,7 +6,7 @@ function [ predictions ] = testCBR( cbr, x2 )
         newcase = new_unclassified_case(x2(i, :));
         similarcase = retrieve(cbr, newcase);
         solvedcase = reuse(similarcase, newcase);
-        cbr = retain(cbr, solvedcase);
+        cbr = retain(cbr, solvedcase)';
         predictions(i) = solvedcase.y;
     end
 end

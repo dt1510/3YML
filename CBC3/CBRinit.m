@@ -11,6 +11,7 @@ function [ cbr ] = CBRinit( x, y, similarity_function )
     end
     
     cbr = compute_weights(cbr);
+    %cbr = compute_means(cbr);
     
 end
 
