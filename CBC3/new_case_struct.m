@@ -7,8 +7,9 @@ function [ case_struct ] = new_case_struct()
 
 cases = [];
 class_weights = ones(6, 45);
+class_entropies = ones(6, 45);
 
-case_struct = struct('cases', cases, 'class_count', zeros(6, 1), 'class_weights', class_weights, 'active_count', zeros(6, 45));
+case_struct = struct('cases', cases, 'class_count', zeros(6, 1), 'class_weights', class_weights, 'class_entropies', class_entropies, 'active_count', zeros(6, 45));
 
 end
 
