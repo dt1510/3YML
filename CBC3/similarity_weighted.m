@@ -4,7 +4,7 @@ function [ similarity_distance ] = similarity_weighted( cbr, single_case1, singl
     class = 1;
     if not(single_case1.y == -1)
         class = single_case1.y;
-    else if not(single_case2.y == -1)
+    elseif not(single_case2.y == -1)
         class = single_case2.y;
     end
         
