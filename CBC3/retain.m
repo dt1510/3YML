@@ -1,5 +1,6 @@
 function [ cbr ] = retain( cbr, solvedcase, case_location)
 %RETAIN adds the solvedcase to the memory.
+
     %cbr = add_case(cbr, solvedcase)
     if ( case_location >= 0 )
         cbr.cases(case_location).typicality = cbr.cases(case_location).typicality + 1;
