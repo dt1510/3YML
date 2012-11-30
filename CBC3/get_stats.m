@@ -21,34 +21,11 @@ function [ stats ] = get_stats ( x ,y, similarity_function)
     stats.avg_recall_rates = zeros(1,num_classes);
     stats.avg_precision_rates = zeros(1,num_classes);
     stats.avg_F1_measures_over_folds = zeros(1,num_classes);
-    for i = 1:num_classes
-        nans = zeros(1,3);
-        for j = 1:num_folds
-            if  classifier{j}.precision_rates(i) == -1
-                nans(1) = nans(1) + 1;
-            else
-                stats.avg_precision_rates(i) = stats.avg_precision_rates(i) + classifier{j}.precision_rates(i);
-            end
-            if classifier{j}.recall_rates(i) == -1
-                nans(2) = nans(2) + 1;
-            else
-                stats.avg_recall_rates(i) = stats.avg_recall_rates(i) + classifier{j}.recall_rates(i);
-            end
-            if classifier{j}.F1_measures(i) == -1
-                nans(3) = nans(3) + 1;
-            else
-                stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) + classifier{j}.F1_measures(i);
-            end           
-%             stats.avg_precision_rates(i) = stats.avg_precision_rates(i) + classifier{j}.precision_rates(i);
-%             stats.avg_recall_rates(i) = stats.avg_recall_rates(i) + classifier{j}.recall_rates(i);
-%             stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) + classifier{j}.F1_measures(i);
-        end
-        stats.avg_precision_rates(i) = stats.avg_precision_rates(i) / (num_folds - nans(1));
-        stats.avg_recall_rates(i) = stats.avg_recall_rates(i) / (num_folds - nans(2));
-        stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) / (num_folds - nans(3));
-%         stats.avg_precision_rates(i) = stats.avg_precision_rates(i) / num_folds;
-%         stats.avg_recall_rates(i) = stats.avg_recall_rates(i) / num_folds;
-%         stats.avg_F1_measures_over_folds(i) = stats.avg_F1_measures_over_folds(i) / num_folds;
+   
+    for i = 1:num_classes   
+        stats.avg_precision_rates(i) = get_precision_rate(i,stats.confusion_matrix);
+        stats.avg_recall_rates(i) = get_recall_rate(i,stats.confusion_matrix);
+        stats.avg_F1_measures_over_folds(i) = get_F1_measure(stats.avg_recall_rates(i), stats.avg_recall_rates(i));
     end
 
 end
