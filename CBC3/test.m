@@ -18,7 +18,7 @@ function [ classification_rate ] = test( x, y, use_percentage)
     y_guess = testCBR(cbr, x_test);
     
     classification_rate = (total_size-nnz(y_guess - y_test))/total_size;
-    cbr.active_count
-    cbr.class_weights
+    %cbr.active_count
+    %cbr.class_weights
 end
 
