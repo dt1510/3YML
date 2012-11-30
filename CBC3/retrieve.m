@@ -5,6 +5,7 @@ function [ min_case, case_location ] = retrieve( cbr, newcase )
     %empty.
     min_value = 1000;
     min_case = newcase;
+    typicality = 0;
     case_location = -1;
     for i = 1:length(cbr.cases)
             switch cbr.similarity_function
@@ -16,9 +17,10 @@ function [ min_case, case_location ] = retrieve( cbr, newcase )
                     value = similarity(newcase, cbr.cases(i));
             end
             
-            if value <= min_value
+            if value < min_value || (value == min_value && cbr.cases(i).typicality >= typicality)
                     min_value = value;
                     min_case = cbr.cases(i);
+                    typicality = cbr.cases(i).typicality;
                     if (value == 0)
                         case_location = i;
                     else
