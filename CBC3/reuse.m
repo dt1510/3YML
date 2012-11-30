@@ -7,4 +7,3 @@ newcase.y = bestcase.y;
 solvedcase = newcase;
 
 end
-

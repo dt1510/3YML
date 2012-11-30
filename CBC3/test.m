@@ -24,5 +24,7 @@ function [ classification_rate ] = test( x, y, use_percentage, similarity_functi
     classification_rate = (total_size-nnz(y_guess - y_test))/total_size;
     %cbr.active_count
     %cbr.class_weights
+    %cbr.mean_active(:,:)
+    
 end
 
