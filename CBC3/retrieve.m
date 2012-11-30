@@ -6,9 +6,15 @@ function [ min_case ] = retrieve( cbr, newcase )
     min_value = 1000;
     min_case = newcase;
     for i = 1:length(cbr.cases)
-            value = similarity(newcase, cbr.cases(i));
-            %value = similarity_weighted(cbr, newcase, cbr.cases(i));
-            %value = similarity_entropy(cbr, newcase, cbr.cases(i));
+            switch cbr.similarity_function
+                case 'similarity_weighted'
+                    value = similarity_weighted(cbr, newcase, cbr.cases(i));
+                case 'similarity_entropy'
+                    value = similarity_entropy(cbr, newcase, cbr.cases(i));
+                otherwise                    
+                    value = similarity(newcase, cbr.cases(i));
+            end
+            
             if value <= min_value
                     min_value = value;
                     min_case = cbr.cases(i);
