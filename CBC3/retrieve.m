@@ -14,6 +14,8 @@ function [ min_case, case_location ] = retrieve( cbr, newcase )
     case_location = -1;
     for i = 1:length(cbr.cases)
             switch cbr.similarity_function
+                case 'similarity'
+                    value = similarity(newcase, cbr.cases(i));
                 case 'similarity_weighted'
                     value = similarity_weighted(cbr, newcase, cbr.cases(i));
                 case 'similarity_entropy'
