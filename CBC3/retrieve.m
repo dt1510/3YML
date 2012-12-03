@@ -3,7 +3,7 @@ function [ min_case, case_location ] = retrieve( cbr, newcase )
 
     %default, not initialized value, return the newcase if the memory is
     %empty.
-    if strcmp(cbr.similarity_function, 'similarity_mean') == 1
+    if strcmp(cbr.similarity_function, 'similarity_case_by_mean') == 1
         [min_case, case_location] = similarity_case_by_mean(cbr, newcase);
         return
     end

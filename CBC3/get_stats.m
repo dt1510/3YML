@@ -25,7 +25,7 @@ function [ stats ] = get_stats ( x ,y, similarity_function)
     for i = 1:num_classes   
         stats.avg_precision_rates(i) = get_precision_rate(i,stats.confusion_matrix);
         stats.avg_recall_rates(i) = get_recall_rate(i,stats.confusion_matrix);
-        stats.avg_F1_measures_over_folds(i) = get_F1_measure(stats.avg_recall_rates(i), stats.avg_recall_rates(i));
+        stats.avg_F1_measures_over_folds(i) = get_F1_measure(stats.avg_recall_rates(i), stats.avg_precision_rates(i));
     end
 
 end

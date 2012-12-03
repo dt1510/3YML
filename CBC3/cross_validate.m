@@ -12,7 +12,7 @@ function [ info ] = cross_validate( x, y, fold_number, similarity_function)
     cbr = CBRinit(data.train_examples,data.train_targets, similarity_function);
     info.predictions = testCBR(cbr,data.test_examples);
     info.confusion_matrix = get_confusion_matrix(num_classes, data.test_targets, info.predictions);
-    %disp(info.confusion_matrix);
+    disp(info.confusion_matrix);
     info.error_rate = get_error_rate(data.test_targets, info.predictions);
     for i = 1:num_classes
         info.precision_rates(i) = get_precision_rate(i, info.confusion_matrix);
