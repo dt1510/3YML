@@ -1,7 +1,7 @@
 function [ cbr ] = CBRinit( x, y, similarity_function )
 %CBRINIT generates a case struct and trains it with the data provided.
     if nargin == 2
-        similarity_function = 'similarity';
+        similarity_function = 'similarity_mean';
     end
     
     cbr = new_case_struct(similarity_function);

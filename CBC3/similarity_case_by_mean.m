@@ -16,7 +16,7 @@ function [ similar_case, case_location ] = similar_case_by_mean( cbr, newcase )
     case_location = 1;    
     min_case = cbr.cases(1);
     for i = 1:length(cbr.cases)
-        if cbr.cases(i).y == min_class
+        if cbr.cases(i).y == min_class            
             value = sum(abs(newcase.x - cbr.cases(i).x));            
             if value <= min_value
                 min_value = value;

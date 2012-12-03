@@ -6,7 +6,7 @@ function [ classification_rate ] = test( x, y, use_percentage, similarity_functi
         use_percentage = 1;
     end    
     if nargin <= 3
-        similarity_function = 'similarity';
+        similarity_function = 'similarity_mean';
     end
     
     training_ratio = 0.67;
