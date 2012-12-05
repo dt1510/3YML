@@ -4,9 +4,9 @@ function [ error_rates ] = error_rates_stats( x, y, net )
     num = 10;
     error_rates = cell(num, 1);
     for fold_number = 1:num
-        [~, error_rates{fold_number}] = cross_validate(x, y, fold_number, net);        
+        [~, error_rates{fold_number}] = cross_validate(x, y, fold_number, net);
     end
-    disp('----------');    
+    %disp('----------');    
     for emotion = 1:6
         vec = zeros(num, 1);
         for i=1:num
@@ -14,7 +14,11 @@ function [ error_rates ] = error_rates_stats( x, y, net )
             vec(i) = fold(emotion);
             %disp(fold(emotion))
         end
-        vec
+        %vec
+    end
+    
+    for fold = 1:num
+        error_rates{fold}
     end
 end
 
