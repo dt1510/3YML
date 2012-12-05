@@ -50,8 +50,6 @@ function [ info, error_rates ] = cross_validate( x, y, fold_number, net)
           info.precision_rates(i) = get_precision_rate(i, info.confusion_matrix);
           info.recall_rates(i) = get_recall_rate(i, info.confusion_matrix);
           info.F1_measures(i) = get_F1_measure(info.recall_rates(i), info.precision_rates(i));
-     end
-
-
+     end    
 end
 
