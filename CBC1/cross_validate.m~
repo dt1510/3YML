@@ -1,4 +1,4 @@
-function [ info, error_rates ] = cross_validate( examples, target_vector, fold_number )
+function [ info ] = cross_validate( examples, target_vector, fold_number )
 % does one fold given a fold number between 1 and 10
 %   trains 6 trees and tests predicted labels against actual labels
 %   outputs a struct which stores predictions vector, confusion matrix,
@@ -34,7 +34,7 @@ function [ info, error_rates ] = cross_validate( examples, target_vector, fold_n
     
     
     info.confusion_matrix = get_confusion_matrix(num_classes, data.test_targets, info.predictions);
-    %disp(info.confusion_matrix);
+    disp(info.confusion_matrix);
     info.error_rate = get_error_rate(data.test_targets, info.predictions);
      for i = 1:num_classes
           info.precision_rates(i) = get_precision_rate(i, info.confusion_matrix);
@@ -42,6 +42,14 @@ function [ info, error_rates ] = cross_validate( examples, target_vector, fold_n
           info.F1_measures(i) = get_F1_measure(info.recall_rates(i), info.precision_rates(i));
      end
 
+    
+%     info.confusion_matrix = get_confusion_matrix(num_classes, data.test_targets, info.predictions);
+%     info.error_rate = get_error_rate(data.test_targets, info.predictions);
+%      for i = 1:num_classes
+%           info.precision_rates(i) = get_precision_rate(i, info.confusion_matrix);
+%           info.recall_rates(i) = get_recall_rate(i, info.confusion_matrix);
+%           info.F1_measures(i) = get_F1_measure(info.recall_rates(i), info.precision_rates(i));
+%      end
      
 end
 
