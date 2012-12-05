@@ -29,8 +29,7 @@ function [ info, error_rates ] = cross_validate( x, y, fold_number, net)
     
     
     error_rates = zeros(6, 1);
-    len = size(data.test_targets, 1);
-    len
+    len = size(data.test_targets, 1);    
     bin_targets = zeros(len);
     bin_predictions = zeros(len);
     for emotion=1:6
